@@ -1,0 +1,20 @@
+name: 'Get Issue Labels Action'
+description: 'Get issue labels in realtime'
+inputs:
+  number:
+    description: 'Issue number'
+    required: true
+outputs:
+  labels:
+    description: ''
+    value: ${{ steps.get-issue-labels.outputs.labels }}
+runs:
+  using: "composite"
+  steps:
+    - name: Get labels
+      id: get-issue-labels
+      shell: bash
+      run: |
+        labels=$(gh pr view "${{ inputs.number }}" --json labels -q '.labels|map(.name)')
+        echo "labels: $labels"
+        echo "labels=$labels" >> $GITHUB_OUTPUT
