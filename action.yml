@@ -16,7 +16,10 @@ runs:
       shell: bash
       env:
         GH_TOKEN: ${{ github.token }}
+        GH_REPO: ${{ github.repository }}
       run: |
+        echo repository: ${{ github.repository }}
+        echo issue: ${{ inputs.number }}
         labels=$(gh issue view "${{ inputs.number }}" --json labels -q '.labels|map(.name)')
         echo "labels: $labels"
         echo "labels=$labels" >> $GITHUB_OUTPUT

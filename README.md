@@ -13,10 +13,8 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     permissions:
-      contents: read
       issues: read
     steps:
-      - uses: actions/checkout@v4
       - name: Get Labels Action
         id: issue-labels
         uses: rubycats-com/get-issue-labels-action
