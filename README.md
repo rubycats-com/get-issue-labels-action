@@ -15,9 +15,9 @@ jobs:
     permissions:
       issues: read
     steps:
-      - name: Get Labels Action
+      - name: Get Labels
         id: issue-labels
-        uses: rubycats-com/get-issue-labels-action
+        uses: rubycats-com/issue-get-labels-action
         with:
           number: ${{ github.event.issue.number }}
       - uses: rubycats-com/jarvis-report-action@main
